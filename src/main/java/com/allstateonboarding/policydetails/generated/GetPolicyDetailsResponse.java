@@ -5,52 +5,66 @@
 //
 
 
-package com.allstateonboarding.generated;
+package com.allstateonboarding.policydetails.generated;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for anonymous complex type.
- *
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>{@code
  * <complexType>
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="claimNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         <element name="PolicyDetails" type="{http://allstate.com/policy}PolicyDetails"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
  * </complexType>
  * }</pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-        "claimNumber"
+    "policyDetails"
 })
-@XmlRootElement(name = "GetPolicyDetailsRequest")
-public class GetPolicyDetailsRequest {
+@XmlRootElement(name = "GetPolicyDetailsResponse")
+public class GetPolicyDetailsResponse {
 
-    protected int claimNumber;
+    @XmlElement(name = "PolicyDetails", required = true)
+    protected PolicyDetails policyDetails;
 
     /**
-     * Gets the value of the claimNumber property.
+     * Gets the value of the policyDetails property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link PolicyDetails }
+     *     
      */
-    public int getClaimNumber() {
-        return claimNumber;
+    public PolicyDetails getPolicyDetails() {
+        return policyDetails;
     }
 
     /**
-     * Sets the value of the claimNumber property.
+     * Sets the value of the policyDetails property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PolicyDetails }
+     *     
      */
-    public void setClaimNumber(int value) {
-        this.claimNumber = value;
+    public void setPolicyDetails(PolicyDetails value) {
+        this.policyDetails = value;
     }
 
 }
