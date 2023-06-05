@@ -13,6 +13,7 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	jaxb
 }
 
 repositories {
@@ -34,7 +35,34 @@ dependencies {
 	testImplementation 'org.apache.groovy:groovy-all:4.0.12'
 	//jacoco
 	implementation 'org.jacoco:org.jacoco.build:0.8.8'
+	//jaxb
+	jaxb(
+			'com.sun.xml.bind:jaxb-xjc:4.0.2',
+			'com.sun.xml.bind:jaxb-impl:4.0.2',
+			'org.glassfish.jaxb:jaxb-runtime:4.0.2'
+	)
 }
+
+task jaxb {
+	System.setProperty('javax.xml.accessExternalSchema', 'all')
+	def jaxbTargetDir = file("src/main/java")
+	doLast {
+		jaxbTargetDir.mkdirs()
+		ant.taskdef(
+				name: 'xjc',
+				classname: 'com.sun.tools.xjc.XJCTask',
+				classpath: configurations.jaxb.asPath
+		)
+		ant.jaxbTargetDir = jaxbTargetDir
+		ant.xjc(
+				destdir: '${jaxbTargetDir}',
+				package: 'com.allstateonboarding.generated',
+				schema: 'src/main/resources/xsd/policy-details.xsd'
+		)
+	}
+}
+
+compileJava.dependsOn jaxb
 
 tasks.named('test') {
 	useJUnitPlatform()

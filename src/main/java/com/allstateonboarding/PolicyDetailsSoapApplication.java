@@ -1,4 +1,4 @@
-package com.allstateonboarding.policydetailssoap;
+package com.allstateonboarding;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
