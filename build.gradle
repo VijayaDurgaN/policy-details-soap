@@ -38,6 +38,9 @@ dependencies {
 	//jacoco
 	implementation 'org.jacoco:org.jacoco.build:0.8.8'
 	//jaxb
+	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+	implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.2'
+	implementation 'com.sun.xml.bind:jaxb-core:4.0.2'
 	jaxb(
 			'com.sun.xml.bind:jaxb-xjc:4.0.2',
 			'com.sun.xml.bind:jaxb-impl:4.0.2',
@@ -78,6 +81,11 @@ task jaxb {
 		ant.xjc(
 				destdir: '${jaxbTargetDir}',
 				package: 'com.allstateonboarding.policydetailssoap.generated',
+				schema: 'src/main/resources/xsd/policy-details.xsd'
+		)
+		ant.xjc(
+				destdir: '${jaxbTargetDir}',
+				package: 'com.allstateonboarding.policydetailsrest.generated',
 				schema: 'src/main/resources/xsd/policy-details.xsd'
 		)
 	}

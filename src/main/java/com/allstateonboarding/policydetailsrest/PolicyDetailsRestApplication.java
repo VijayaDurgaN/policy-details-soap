@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @ComponentScan("com.allstateonboarding.policydetailsrest")
-@PropertySource("rest-application.properties")
+@PropertySource("classpath:rest-application.properties")
 public class PolicyDetailsRestApplication {
 
     public static void main(String[] args) {

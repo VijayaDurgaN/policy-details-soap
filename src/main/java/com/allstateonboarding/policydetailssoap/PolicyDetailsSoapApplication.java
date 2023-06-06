@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @ComponentScan("com.allstateonboarding.policydetailssoap")
-@PropertySource("soap-application.properties")
+@PropertySource("classpath:soap-application.properties")
 public class PolicyDetailsSoapApplication {
 
 	public static void main(String[] args) {
