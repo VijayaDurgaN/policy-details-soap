@@ -2,6 +2,7 @@ package com.allstateonboarding.policydetails.repository;
 
 import com.allstateonboarding.policydetails.exception.InternalServerError;
 import com.allstateonboarding.policydetails.generated.PolicyDetails;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,7 @@ import java.util.Optional;
 public class PolicyDetailsRepository {
 
     private final PolicyDetailsReader reader;
+    protected Logger logger = org.slf4j.LoggerFactory.getLogger(PolicyDetailsRepository.class);
 
     @Autowired
     public PolicyDetailsRepository(PolicyDetailsReader reader) {
@@ -27,8 +29,9 @@ public class PolicyDetailsRepository {
                     .filter(policy -> policy.getClaimNumber() == claimNumber)
                     .findFirst();
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new InternalServerError("Error fetching policy details");
+            String errorMessage = "Error fetching policy details";
+            logger.error(errorMessage);
+            throw new InternalServerError(errorMessage);
         }
     }
 }

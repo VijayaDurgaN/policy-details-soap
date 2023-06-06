@@ -2,6 +2,7 @@ package com.allstateonboarding.policydetails.repository
 
 import com.allstateonboarding.policydetails.exception.InternalServerError
 import com.allstateonboarding.policydetails.generated.PolicyDetails
+import org.slf4j.Logger
 import spock.lang.Specification
 
 import java.util.stream.Collectors
@@ -9,6 +10,7 @@ import java.util.stream.Collectors
 class PolicyDetailsRepositoryTest extends Specification {
     private PolicyDetailsReader reader = Mock(PolicyDetailsReader)
     private PolicyDetailsRepository repository = new PolicyDetailsRepository(reader)
+
 
     def "should find policydetails by claim number"() {
         given:
@@ -36,11 +38,15 @@ class PolicyDetailsRepositoryTest extends Specification {
     def "should throw Internal Server Error when policy details could not be fetched"() {
         given:
         def claimNumber = 1233
+        def mockLogger = Mock(Logger)
+        repository.logger = mockLogger
         when:
         repository.findByClaimNumber(claimNumber)
         then:
         1 * reader.readPolicyDetails() >> { throw new IOException() }
         def error = thrown(InternalServerError)
         error.message == "Error fetching policy details"
+        1 * mockLogger.error("Error fetching policy details")
+
     }
 }
