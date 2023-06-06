@@ -3,7 +3,7 @@ package com.allstateonboarding.policydetails.service;
 import com.allstateonboarding.policydetails.exception.PolicyNotFoundException;
 import com.allstateonboarding.policydetails.generated.GetPolicyDetailsResponse;
 import com.allstateonboarding.policydetails.generated.PolicyDetails;
-import com.allstateonboarding.policydetails.repo.PolicyDetailsRepository;
+import com.allstateonboarding.policydetails.repository.PolicyDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
