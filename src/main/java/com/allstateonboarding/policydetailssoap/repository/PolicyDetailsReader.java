@@ -1,6 +1,6 @@
-package com.allstateonboarding.policydetails.repository;
+package com.allstateonboarding.policydetailssoap.repository;
 
-import com.allstateonboarding.policydetails.generated.PolicyDetails;
+import com.allstateonboarding.policydetailssoap.generated.PolicyDetails;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;

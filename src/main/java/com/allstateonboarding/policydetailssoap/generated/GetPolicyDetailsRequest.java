@@ -5,12 +5,9 @@
 //
 
 
-package com.allstateonboarding.policydetails.generated;
+package com.allstateonboarding.policydetailssoap.generated;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlRootElement;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.*;
 
 
 /**
@@ -29,31 +26,36 @@ import jakarta.xml.bind.annotation.XmlType;
  *   </complexContent>
  * </complexType>
  * }</pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "claimNumber"
+        "claimNumber"
 })
 @XmlRootElement(name = "GetPolicyDetailsRequest")
 public class GetPolicyDetailsRequest {
 
-    protected int claimNumber;
+    @XmlElement(required = true, type = Integer.class, nillable = true)
+    protected Integer claimNumber;
 
     /**
      * Gets the value of the claimNumber property.
-     * 
+     *
+     * @return possible object is
+     * {@link Integer }
      */
-    public int getClaimNumber() {
+    public Integer getClaimNumber() {
         return claimNumber;
     }
 
     /**
      * Sets the value of the claimNumber property.
-     * 
+     *
+     * @param value allowed object is
+     *              {@link Integer }
      */
-    public void setClaimNumber(int value) {
+    public void setClaimNumber(Integer value) {
         this.claimNumber = value;
     }
 

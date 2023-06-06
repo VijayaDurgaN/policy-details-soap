@@ -7,14 +7,7 @@
     <xs:element name="GetPolicyDetailsRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="claimNumber" type="xs:int" nillable="true">
-                    <!--                <xs:simpleType>-->
-                    <!--                    <xs:restriction base="xs:int">-->
-                    <!--                        <xs:minInclusive value='10000000'/>-->
-                    <!--                        <xs:maxInclusive value='99999999'/>-->
-                    <!--                    </xs:restriction>-->
-                    <!--                </xs:simpleType>-->
-                </xs:element>
+                <xs:element name="claimNumber" type="xs:int"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

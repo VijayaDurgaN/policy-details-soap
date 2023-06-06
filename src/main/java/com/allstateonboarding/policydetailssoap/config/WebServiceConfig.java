@@ -1,4 +1,4 @@
-package com.allstateonboarding.policydetails.config;
+package com.allstateonboarding.policydetailssoap.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;

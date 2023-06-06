@@ -1,4 +1,4 @@
-package com.allstateonboarding.policydetails.exception;
+package com.allstateonboarding.policydetailssoap.exception;
 
 public class PolicyNotFoundException extends RuntimeException {
     public PolicyNotFoundException(String message) {

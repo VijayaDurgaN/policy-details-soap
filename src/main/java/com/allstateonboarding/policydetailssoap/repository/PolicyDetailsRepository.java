@@ -1,7 +1,7 @@
-package com.allstateonboarding.policydetails.repository;
+package com.allstateonboarding.policydetailssoap.repository;
 
-import com.allstateonboarding.policydetails.exception.InternalServerError;
-import com.allstateonboarding.policydetails.generated.PolicyDetails;
+import com.allstateonboarding.policydetailssoap.exception.InternalServerError;
+import com.allstateonboarding.policydetailssoap.generated.PolicyDetails;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

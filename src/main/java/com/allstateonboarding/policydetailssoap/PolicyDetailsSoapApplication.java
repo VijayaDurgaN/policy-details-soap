@@ -1,11 +1,11 @@
-package com.allstateonboarding.policydetails;
+package com.allstateonboarding.policydetailssoap;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan("com.allstateonboarding.policydetails")
+@ComponentScan("com.allstateonboarding.policydetailssoap")
 public class PolicyDetailsSoapApplication {
 
 	public static void main(String[] args) {

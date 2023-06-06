@@ -25,6 +25,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-artemis'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -76,7 +77,7 @@ task jaxb {
 		ant.jaxbTargetDir = jaxbTargetDir
 		ant.xjc(
 				destdir: '${jaxbTargetDir}',
-				package: 'com.allstateonboarding.policydetails.generated',
+				package: 'com.allstateonboarding.policydetailssoap.generated',
 				schema: 'src/main/resources/xsd/policy-details.xsd'
 		)
 	}

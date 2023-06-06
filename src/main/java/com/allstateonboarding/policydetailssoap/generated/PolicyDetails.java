@@ -5,7 +5,7 @@
 //
 
 
-package com.allstateonboarding.policydetails.generated;
+package com.allstateonboarding.policydetailssoap.generated;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

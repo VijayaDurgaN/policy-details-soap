@@ -1,6 +1,6 @@
-package com.allstateonboarding.policydetails.config;
+package com.allstateonboarding.policydetailssoap.config;
 
-import com.allstateonboarding.policydetails.repository.PolicyDetailsReader;
+import com.allstateonboarding.policydetailssoap.repository.PolicyDetailsReader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

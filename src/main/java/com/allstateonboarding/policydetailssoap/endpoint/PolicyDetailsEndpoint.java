@@ -1,8 +1,10 @@
-package com.allstateonboarding.policydetails.endpoint;
+package com.allstateonboarding.policydetailssoap.endpoint;
 
-import com.allstateonboarding.policydetails.generated.GetPolicyDetailsRequest;
-import com.allstateonboarding.policydetails.generated.GetPolicyDetailsResponse;
-import com.allstateonboarding.policydetails.service.PolicyDetailsService;
+import com.allstateonboarding.policydetailssoap.exception.InvalidClaimNumberException;
+import com.allstateonboarding.policydetailssoap.generated.GetPolicyDetailsRequest;
+import com.allstateonboarding.policydetailssoap.generated.GetPolicyDetailsResponse;
+import com.allstateonboarding.policydetailssoap.service.PolicyDetailsService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -22,7 +24,10 @@ public class PolicyDetailsEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE, localPart = "GetPolicyDetailsRequest")
     @ResponsePayload
-    public GetPolicyDetailsResponse getPolicyDetailsResponse(@RequestPayload GetPolicyDetailsRequest getPolicyDetailsRequest) {
+    public GetPolicyDetailsResponse getPolicyDetailsResponse(@RequestPayload @Valid GetPolicyDetailsRequest getPolicyDetailsRequest) throws InvalidClaimNumberException {
+        if (getPolicyDetailsRequest.getClaimNumber() == null) {
+            throw new InvalidClaimNumberException("Give valid claim number");
+        }
         return service.getPolicyDetailsByClaimNumber(getPolicyDetailsRequest.getClaimNumber());
     }
 }

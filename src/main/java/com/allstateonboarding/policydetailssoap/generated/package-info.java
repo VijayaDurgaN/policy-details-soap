@@ -5,4 +5,4 @@
 //
 
 @jakarta.xml.bind.annotation.XmlSchema(namespace = "http://allstate.com/policy", elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package com.allstateonboarding.policydetails.generated;
+package com.allstateonboarding.policydetailssoap.generated;

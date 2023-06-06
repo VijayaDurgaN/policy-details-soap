@@ -1,8 +1,8 @@
-package com.allstateonboarding.policydetails.service
+package com.allstateonboarding.policydetailssoap.service
 
-import com.allstateonboarding.policydetails.exception.PolicyNotFoundException
-import com.allstateonboarding.policydetails.generated.PolicyDetails
-import com.allstateonboarding.policydetails.repository.PolicyDetailsRepository
+import com.allstateonboarding.policydetailssoap.exception.PolicyNotFoundException
+import com.allstateonboarding.policydetailssoap.generated.PolicyDetails
+import com.allstateonboarding.policydetailssoap.repository.PolicyDetailsRepository
 import org.slf4j.Logger
 import spock.lang.Specification
 

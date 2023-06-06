@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetPolicyDetailsResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                          xmlns="http://allstate.com/policy"
+                          xsi:schemaLocation="http://allstate.com/policy policy-details.xsd">
+    <PolicyDetails>
+        <claimNumber>123</claimNumber>
+        <policyHolderName>Spring in28minutes</policyHolderName>
+        <policyNumber>123456</policyNumber>
+        <coverageName>abc</coverageName>
+        <coverageLimit>200000</coverageLimit>
+        <deductible>10000</deductible>
+    </PolicyDetails>
+</GetPolicyDetailsResponse>

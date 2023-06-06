@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetPolicyDetailsRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                         xmlns="http://allstate.com/policy"
+                         xsi:schemaLocation="http://allstate.com/policy policy-details.xsd">
+    <claimNumber>123</claimNumber> <!-- numbers  -->
+</GetPolicyDetailsRequest>

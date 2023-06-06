@@ -1,4 +1,4 @@
-package com.allstateonboarding.policydetails.exception;
+package com.allstateonboarding.policydetailssoap.exception;
 
 public class InternalServerError extends RuntimeException {
     public InternalServerError(String message) {
