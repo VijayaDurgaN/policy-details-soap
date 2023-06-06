@@ -52,8 +52,10 @@ public class GetPolicyDetailsRequest {
     /**
      * Sets the value of the claimNumber property.
      *
-     * @param value allowed object is
-     *              {@link Integer }
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
      */
     public void setClaimNumber(Integer value) {
         this.claimNumber = value;
