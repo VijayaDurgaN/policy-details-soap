@@ -1,7 +1,7 @@
 package com.allstateonboarding.policydetailsrest.service
 
 import com.allstateonboarding.policydetailsrest.client.SoapClient
-import com.allstateonboarding.policydetailsrest.exception.InvalidSoapRequestException
+import com.allstateonboarding.policydetailsrest.exception.BadRequestException
 import com.allstateonboarding.policydetailsrest.exception.PolicyNotFoundException
 import com.allstateonboarding.policydetailsrest.exception.ServiceUnavailableException
 import com.allstateonboarding.policydetailsrest.generated.GetPolicyDetailsResponse
@@ -59,7 +59,7 @@ class PolicyDetailsServiceTest extends Specification {
         service.getPolicyDetails(12345678)
 
         then:
-        def soapFaultException = thrown(InvalidSoapRequestException)
+        def soapFaultException = thrown(BadRequestException)
         soapFaultException.message == "Invalid soap request"
     }
 

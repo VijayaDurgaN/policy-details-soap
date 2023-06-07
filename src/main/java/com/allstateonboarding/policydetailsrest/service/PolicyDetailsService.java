@@ -2,7 +2,7 @@ package com.allstateonboarding.policydetailsrest.service;
 
 import com.allstateonboarding.policydetailsrest.client.SoapClient;
 import com.allstateonboarding.policydetailsrest.dto.PolicyDetailsDTO;
-import com.allstateonboarding.policydetailsrest.exception.InvalidSoapRequestException;
+import com.allstateonboarding.policydetailsrest.exception.BadRequestException;
 import com.allstateonboarding.policydetailsrest.exception.PolicyNotFoundException;
 import com.allstateonboarding.policydetailsrest.exception.ServiceUnavailableException;
 import com.allstateonboarding.policydetailsrest.generated.GetPolicyDetailsRequest;
@@ -46,7 +46,7 @@ public class PolicyDetailsService {
             if (localPart.equals(POLICY_NOT_FOUND_EXCEPTION_FAULT_CODE)) {
                 throw new PolicyNotFoundException(e.getFaultStringOrReason());
             }
-            throw new InvalidSoapRequestException("Invalid soap request");
+            throw new BadRequestException("Invalid soap request");
         }
     }
 }
