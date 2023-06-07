@@ -7,14 +7,18 @@
 
 package com.allstateonboarding.policydetailsrest.generated;
 
-import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for anonymous complex type.
- *
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>{@code
  * <complexType>
  *   <complexContent>
@@ -26,10 +30,12 @@ import jakarta.xml.bind.annotation.*;
  *   </complexContent>
  * </complexType>
  * }</pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-        "claimNumber"
+    "claimNumber"
 })
 @XmlRootElement(name = "GetPolicyDetailsRequest")
 public class GetPolicyDetailsRequest {
@@ -39,9 +45,11 @@ public class GetPolicyDetailsRequest {
 
     /**
      * Gets the value of the claimNumber property.
-     *
-     * @return possible object is
-     * {@link Integer }
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
      */
     public Integer getClaimNumber() {
         return claimNumber;
@@ -49,9 +57,11 @@ public class GetPolicyDetailsRequest {
 
     /**
      * Sets the value of the claimNumber property.
-     *
-     * @param value allowed object is
-     *              {@link Integer }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
      */
     public void setClaimNumber(Integer value) {
         this.claimNumber = value;

@@ -3,7 +3,6 @@ package com.allstateonboarding.policydetailssoap.endpoint
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.webservices.server.WebServiceServerTest
 import org.springframework.core.io.ClassPathResource
-import org.springframework.test.context.ContextConfiguration
 import org.springframework.ws.test.server.MockWebServiceClient
 import org.springframework.xml.transform.StringSource
 import spock.lang.Specification
@@ -12,8 +11,8 @@ import static org.springframework.ws.test.server.RequestCreators.withPayload
 import static org.springframework.ws.test.server.ResponseMatchers.*
 
 @WebServiceServerTest
-@ContextConfiguration
 class PolicyDetailsEndpointTest extends Specification {
+
     @Autowired
     private MockWebServiceClient client
 

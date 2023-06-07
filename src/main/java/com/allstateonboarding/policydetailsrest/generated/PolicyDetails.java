@@ -15,9 +15,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for PolicyDetails complex type.
- *
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>{@code
  * <complexType name="PolicyDetails">
  *   <complexContent>
@@ -34,15 +34,17 @@ import jakarta.xml.bind.annotation.XmlType;
  *   </complexContent>
  * </complexType>
  * }</pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PolicyDetails", propOrder = {
-        "claimNumber",
-        "policyHolderName",
-        "policyNumber",
-        "coverageName",
-        "coverageLimit",
-        "deductible"
+    "claimNumber",
+    "policyHolderName",
+    "policyNumber",
+    "coverageName",
+    "coverageLimit",
+    "deductible"
 })
 public class PolicyDetails {
 
@@ -57,6 +59,7 @@ public class PolicyDetails {
 
     /**
      * Gets the value of the claimNumber property.
+     * 
      */
     public int getClaimNumber() {
         return claimNumber;
@@ -64,6 +67,7 @@ public class PolicyDetails {
 
     /**
      * Sets the value of the claimNumber property.
+     * 
      */
     public void setClaimNumber(int value) {
         this.claimNumber = value;
@@ -71,9 +75,11 @@ public class PolicyDetails {
 
     /**
      * Gets the value of the policyHolderName property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getPolicyHolderName() {
         return policyHolderName;
@@ -81,9 +87,11 @@ public class PolicyDetails {
 
     /**
      * Sets the value of the policyHolderName property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setPolicyHolderName(String value) {
         this.policyHolderName = value;
@@ -91,6 +99,7 @@ public class PolicyDetails {
 
     /**
      * Gets the value of the policyNumber property.
+     * 
      */
     public int getPolicyNumber() {
         return policyNumber;
@@ -98,6 +107,7 @@ public class PolicyDetails {
 
     /**
      * Sets the value of the policyNumber property.
+     * 
      */
     public void setPolicyNumber(int value) {
         this.policyNumber = value;
@@ -105,9 +115,11 @@ public class PolicyDetails {
 
     /**
      * Gets the value of the coverageName property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getCoverageName() {
         return coverageName;
@@ -115,9 +127,11 @@ public class PolicyDetails {
 
     /**
      * Sets the value of the coverageName property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setCoverageName(String value) {
         this.coverageName = value;
@@ -125,6 +139,7 @@ public class PolicyDetails {
 
     /**
      * Gets the value of the coverageLimit property.
+     * 
      */
     public int getCoverageLimit() {
         return coverageLimit;
@@ -132,6 +147,7 @@ public class PolicyDetails {
 
     /**
      * Sets the value of the coverageLimit property.
+     * 
      */
     public void setCoverageLimit(int value) {
         this.coverageLimit = value;
@@ -139,6 +155,7 @@ public class PolicyDetails {
 
     /**
      * Gets the value of the deductible property.
+     * 
      */
     public int getDeductible() {
         return deductible;
@@ -146,6 +163,7 @@ public class PolicyDetails {
 
     /**
      * Sets the value of the deductible property.
+     * 
      */
     public void setDeductible(int value) {
         this.deductible = value;

@@ -7,14 +7,18 @@
 
 package com.allstateonboarding.policydetailsrest.generated;
 
-import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for anonymous complex type.
- *
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>{@code
  * <complexType>
  *   <complexContent>
@@ -26,10 +30,12 @@ import jakarta.xml.bind.annotation.*;
  *   </complexContent>
  * </complexType>
  * }</pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-        "policyDetails"
+    "policyDetails"
 })
 @XmlRootElement(name = "GetPolicyDetailsResponse")
 public class GetPolicyDetailsResponse {
@@ -39,9 +45,11 @@ public class GetPolicyDetailsResponse {
 
     /**
      * Gets the value of the policyDetails property.
-     *
-     * @return possible object is
-     * {@link PolicyDetails }
+     * 
+     * @return
+     *     possible object is
+     *     {@link PolicyDetails }
+     *     
      */
     public PolicyDetails getPolicyDetails() {
         return policyDetails;
@@ -49,9 +57,11 @@ public class GetPolicyDetailsResponse {
 
     /**
      * Sets the value of the policyDetails property.
-     *
-     * @param value allowed object is
-     *              {@link PolicyDetails }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PolicyDetails }
+     *     
      */
     public void setPolicyDetails(PolicyDetails value) {
         this.policyDetails = value;

@@ -9,18 +9,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController()
+@RestController
 @RequestMapping("/policy-details")
 public class PolicyDetailsController {
 
+    private final SoapClient soapClient;
+
     @Autowired
-    SoapClient soapClient;
+    public PolicyDetailsController(SoapClient soapClient) {
+        this.soapClient = soapClient;
+    }
 
     @GetMapping("/by-claim-number/{claimNumber}")
     public GetPolicyDetailsResponse getPolicyDetails(@PathVariable Integer claimNumber) {
         GetPolicyDetailsRequest getPolicyDetailsRequest = new GetPolicyDetailsRequest();
         getPolicyDetailsRequest.setClaimNumber(claimNumber);
-        GetPolicyDetailsResponse getPolicyDetailsResponse = soapClient.sendSoapRequest(getPolicyDetailsRequest);
-        return getPolicyDetailsResponse;
+        return soapClient.sendSoapRequest(getPolicyDetailsRequest);
     }
 }
