@@ -1,8 +1,7 @@
 package com.allstateonboarding.policydetailsrest.controller;
 
-import com.allstateonboarding.policydetailsrest.client.SoapClient;
-import com.allstateonboarding.policydetailsrest.generated.GetPolicyDetailsRequest;
-import com.allstateonboarding.policydetailsrest.generated.GetPolicyDetailsResponse;
+import com.allstateonboarding.policydetailsrest.dto.PolicyDetailsDTO;
+import com.allstateonboarding.policydetailsrest.service.PolicyDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,17 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/policy-details")
 public class PolicyDetailsController {
 
-    private final SoapClient soapClient;
+
+    private final PolicyDetailsService service;
 
     @Autowired
-    public PolicyDetailsController(SoapClient soapClient) {
-        this.soapClient = soapClient;
+    public PolicyDetailsController(PolicyDetailsService policyDetailsService) {
+        this.service = policyDetailsService;
     }
 
     @GetMapping("/by-claim-number/{claimNumber}")
-    public GetPolicyDetailsResponse getPolicyDetails(@PathVariable Integer claimNumber) {
-        GetPolicyDetailsRequest getPolicyDetailsRequest = new GetPolicyDetailsRequest();
-        getPolicyDetailsRequest.setClaimNumber(claimNumber);
-        return soapClient.sendSoapRequest(getPolicyDetailsRequest);
+    public PolicyDetailsDTO getPolicyDetails(@PathVariable Integer claimNumber) {
+        return service.getPolicyDetails(claimNumber);
     }
 }
