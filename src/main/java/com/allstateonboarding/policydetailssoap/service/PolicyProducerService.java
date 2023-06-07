@@ -18,7 +18,7 @@ public class PolicyProducerService {
     @Autowired
     public PolicyProducerService(
             JmsTemplate jmsTemplate,
-            @Value("spring.jms.policyDetailsQueueName") String policyDetailsQueue
+            @Value("${spring.jms.policyDetailsQueueName}") String policyDetailsQueue
     ) {
         this.jmsTemplate = jmsTemplate;
         this.policyDetailsQueue = policyDetailsQueue;

@@ -10,7 +10,7 @@
   {
     "claimNumber": 1234,
     "policyHolderName": "Lakshmi",
-    "policyNumber": 1234567,
+    "policyNumber": 12345678,
     "coverageName": "Prabha",
     "coverageLimit": 10500,
     "deductible": 600
@@ -18,7 +18,7 @@
   {
     "claimNumber": 1235,
     "policyHolderName": "Aswath",
-    "policyNumber": 12345678,
+    "policyNumber": 123456789,
     "coverageName": "Kumar",
     "coverageLimit": 10600,
     "deductible": 700
