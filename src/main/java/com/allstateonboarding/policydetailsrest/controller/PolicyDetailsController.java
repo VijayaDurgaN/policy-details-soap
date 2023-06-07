@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/policy-details")
 public class PolicyDetailsController {
 
-
     private final PolicyDetailsService service;
 
     @Autowired

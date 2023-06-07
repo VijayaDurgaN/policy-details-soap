@@ -10,7 +10,9 @@ public class SoapClient extends WebServiceGatewaySupport {
     private final WebServiceTemplate webServiceTemplate = getWebServiceTemplate();
 
     public GetPolicyDetailsResponse sendSoapRequest(GetPolicyDetailsRequest soapRequest) {
-
-        return (GetPolicyDetailsResponse) webServiceTemplate.marshalSendAndReceive("http://localhost:8080/ws/policy-details", soapRequest);
+        return (GetPolicyDetailsResponse) webServiceTemplate.marshalSendAndReceive(
+                "http://localhost:8080/ws/policy-details",
+                soapRequest
+        );
     }
 }
