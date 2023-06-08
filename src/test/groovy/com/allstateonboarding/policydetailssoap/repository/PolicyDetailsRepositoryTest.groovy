@@ -10,9 +10,19 @@ import java.util.stream.Collectors
 class PolicyDetailsRepositoryTest extends Specification {
     private PolicyDetailsReader reader = Mock(PolicyDetailsReader)
     private PolicyDetailsRepository repository = new PolicyDetailsRepository(reader)
+    def listOfPolicyDetails = List.of(
+            1233,
+            1234,
+            1235
+    ).stream().map(
+            claimNumber1 -> {
+                def policyDetails = new PolicyDetails()
+                policyDetails.setClaimNumber(claimNumber1)
+                return policyDetails
+            }
+    ).collect(Collectors.toList())
 
-
-    def "should find policydetails by claim number"() {
+    def "should find policy details by claim number"() {
         given:
         def claimNumber = 1233
 
@@ -20,19 +30,22 @@ class PolicyDetailsRepositoryTest extends Specification {
         def policyDetail = repository.findByClaimNumber(claimNumber)
 
         then:
-        1 * reader.readPolicyDetails() >> List.of(
-                1233,
-                1234,
-                1235
-        ).stream().map(
-                claimNumber1 -> {
-                    def policyDetails = new PolicyDetails()
-                    policyDetails.setClaimNumber(claimNumber1)
-                    return policyDetails
-                }
-        ).collect(Collectors.toList())
+        1 * reader.readPolicyDetails() >> listOfPolicyDetails
         policyDetail != Optional.empty()
         policyDetail.get().claimNumber == claimNumber
+    }
+
+    def "should return empty optional object when claim number does not exist"() {
+        given:
+        def claimNumber = 1230
+
+        when:
+        def policyDetail = repository.findByClaimNumber(claimNumber)
+
+
+        then:
+        1 * reader.readPolicyDetails() >> listOfPolicyDetails
+        policyDetail == Optional.empty()
     }
 
     def "should throw Internal Server Error when policy details could not be fetched"() {
@@ -47,6 +60,5 @@ class PolicyDetailsRepositoryTest extends Specification {
         def error = thrown(InternalServerError)
         error.message == "Error fetching policy details"
         1 * mockLogger.error("Error fetching policy details")
-
     }
 }
