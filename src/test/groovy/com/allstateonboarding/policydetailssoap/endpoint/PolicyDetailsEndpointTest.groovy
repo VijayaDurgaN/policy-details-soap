@@ -25,13 +25,13 @@ class PolicyDetailsEndpointTest extends Specification {
 
         StringSource request = new StringSource(
                 "<ns:GetPolicyDetailsRequest xmlns:ns='http://allstate.com/policy'>" +
-                        "<ns:claimNumber>1233</ns:claimNumber>" +
+                        "<ns:claimNumber>12345678</ns:claimNumber>" +
                         "</ns:GetPolicyDetailsRequest>"
         )
         StringSource response = new StringSource(
                 "<ns:GetPolicyDetailsResponse xmlns:ns='http://allstate.com/policy'>" +
                         "<ns:PolicyDetails>" +
-                        "<ns:claimNumber>1233</ns:claimNumber>" +
+                        "<ns:claimNumber>12345678</ns:claimNumber>" +
                         "<ns:policyHolderName>Vijaya</ns:policyHolderName>" +
                         "<ns:policyNumber>123456</ns:policyNumber>" +
                         "<ns:coverageName>Durga</ns:coverageName>" +

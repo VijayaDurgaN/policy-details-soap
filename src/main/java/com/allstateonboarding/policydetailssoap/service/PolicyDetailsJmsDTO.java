@@ -1,18 +1,13 @@
 package com.allstateonboarding.policydetailssoap.service;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
 import java.io.Serializable;
 
-@NoArgsConstructor
-@EqualsAndHashCode
-@Getter
-@Setter
-@ToString
+@lombok.NoArgsConstructor
+@lombok.EqualsAndHashCode
+@lombok.Getter
+@lombok.Setter
+@lombok.ToString
+@lombok.Generated
 public class PolicyDetailsJmsDTO implements Serializable {
     private int claimNumber;
     private String policyHolderName;

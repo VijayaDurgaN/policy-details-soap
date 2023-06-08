@@ -1,6 +1,5 @@
 package com.allstateonboarding.policydetailssoap.endpoint;
 
-import com.allstateonboarding.policydetailssoap.exception.InvalidClaimNumberException;
 import com.allstateonboarding.policydetailssoap.generated.GetPolicyDetailsRequest;
 import com.allstateonboarding.policydetailssoap.generated.GetPolicyDetailsResponse;
 import com.allstateonboarding.policydetailssoap.service.PolicyDetailsService;
@@ -24,10 +23,7 @@ public class PolicyDetailsEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE, localPart = "GetPolicyDetailsRequest")
     @ResponsePayload
-    public GetPolicyDetailsResponse getPolicyDetailsResponse(@RequestPayload @Valid GetPolicyDetailsRequest getPolicyDetailsRequest) throws InvalidClaimNumberException {
-        if (getPolicyDetailsRequest.getClaimNumber() == null) {
-            throw new InvalidClaimNumberException("Give valid claim number");
-        }
+    public GetPolicyDetailsResponse getPolicyDetailsResponse(@RequestPayload @Valid GetPolicyDetailsRequest getPolicyDetailsRequest) {
         return service.getPolicyDetailsByClaimNumber(getPolicyDetailsRequest.getClaimNumber());
     }
 }

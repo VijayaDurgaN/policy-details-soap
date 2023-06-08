@@ -1,6 +1,6 @@
 [
   {
-    "claimNumber": 1233,
+    "claimNumber": 12345678,
     "policyHolderName": "Vijaya",
     "policyNumber": 123456,
     "coverageName": "Durga",
@@ -20,6 +20,14 @@
     "policyHolderName": "Aswath",
     "policyNumber": 123456789,
     "coverageName": "Kumar",
+    "coverageLimit": 10600,
+    "deductible": 700
+  },
+  {
+    "claimNumber": 10000000,
+    "policyHolderName": "Neil",
+    "policyNumber": 123456789,
+    "coverageName": "Tyson",
     "coverageLimit": 10600,
     "deductible": 700
   }

@@ -9,7 +9,6 @@ package com.allstateonboarding.policydetailssoap.generated;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -24,7 +23,14 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="claimNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         <element name="claimNumber">
+ *           <simpleType>
+ *             <restriction base="{http://www.w3.org/2001/XMLSchema}int">
+ *               <minInclusive value="10000000"/>
+ *               <maxInclusive value="99999999"/>
+ *             </restriction>
+ *           </simpleType>
+ *         </element>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -40,30 +46,21 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "GetPolicyDetailsRequest")
 public class GetPolicyDetailsRequest {
 
-    @XmlElement(required = true, type = Integer.class, nillable = true)
-    protected Integer claimNumber;
+    protected int claimNumber;
 
     /**
      * Gets the value of the claimNumber property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
      */
-    public Integer getClaimNumber() {
+    public int getClaimNumber() {
         return claimNumber;
     }
 
     /**
      * Sets the value of the claimNumber property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
      */
-    public void setClaimNumber(Integer value) {
+    public void setClaimNumber(int value) {
         this.claimNumber = value;
     }
 
