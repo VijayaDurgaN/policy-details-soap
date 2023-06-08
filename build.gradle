@@ -59,7 +59,9 @@ jacocoTestReport {
         classDirectories.setFrom(files(classDirectories.files.collect {
             fileTree(dir: it, exclude: [
                     "**/generated/*",
-                    "com/allstateonboarding/policydetailssoap/PolicyDetailsSoapApplication.class"
+                    "com/allstateonboarding/policydetailssoap/PolicyDetailsSoapApplication.class",
+                    "com/allstateonboarding/policydetailsjms/PolicyDetailsJmsApplication.class",
+                    "com/allstateonboarding/policydetailsrest/PolicyDetailsRestApplication.class"
             ])
         }))
     }
