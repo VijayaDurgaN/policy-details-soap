@@ -1,7 +1,7 @@
 package com.allstateonboarding.policydetailsjms.service
 
+import com.allstateonboarding.policydetailsjms.model.PolicyDetailsJmsDTO
 import com.allstateonboarding.policydetailsjms.model.PolicyDetailsResult
-import com.allstateonboarding.policydetailssoap.service.PolicyDetailsJmsDTO
 import org.springframework.jms.core.JmsTemplate
 import spock.lang.Specification
 

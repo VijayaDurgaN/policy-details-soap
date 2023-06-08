@@ -1,7 +1,6 @@
 package com.allstateonboarding.policydetailsjms.model;
 
 
-import com.allstateonboarding.policydetailssoap.service.PolicyDetailsJmsDTO;
 import lombok.Builder;
 import lombok.Data;
 
