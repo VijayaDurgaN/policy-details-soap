@@ -17,7 +17,7 @@ class SoapClientTest extends Specification {
     @Autowired
     PolicyDetailsSoapClient client
 
-    def "Name"() {
+    def "should make request to the soap service when sendSoapRequest is called"() {
         given:
         def mockServer = MockWebServiceServer.createServer(client)
         mockServer.expect(
