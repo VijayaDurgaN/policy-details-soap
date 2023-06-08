@@ -1,7 +1,6 @@
 package com.allstateonboarding.policydetailsrest.client
 
 import com.allstateonboarding.policydetailsrest.generated.GetPolicyDetailsRequest
-import com.allstateonboarding.policydetailsrest.generated.PolicyDetails
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.webservices.client.AutoConfigureMockWebServiceServer
 import org.springframework.boot.test.context.SpringBootTest
@@ -16,7 +15,7 @@ import spock.lang.Specification
 class SoapClientTest extends Specification {
 
     @Autowired
-    SoapClient client
+    PolicyDetailsSoapClient client
 
     def "Name"() {
         given:

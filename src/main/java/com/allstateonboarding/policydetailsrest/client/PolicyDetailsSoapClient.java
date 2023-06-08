@@ -6,7 +6,7 @@ import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 
-public class SoapClient extends WebServiceGatewaySupport {
+public class PolicyDetailsSoapClient extends WebServiceGatewaySupport {
     private final WebServiceTemplate webServiceTemplate = getWebServiceTemplate();
 
     public GetPolicyDetailsResponse sendSoapRequest(GetPolicyDetailsRequest soapRequest) {

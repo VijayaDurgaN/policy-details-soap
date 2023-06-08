@@ -1,6 +1,6 @@
 package com.allstateonboarding.policydetailsrest.service;
 
-import com.allstateonboarding.policydetailsrest.client.SoapClient;
+import com.allstateonboarding.policydetailsrest.client.PolicyDetailsSoapClient;
 import com.allstateonboarding.policydetailsrest.dto.PolicyDetailsDTO;
 import com.allstateonboarding.policydetailsrest.exception.BadRequestException;
 import com.allstateonboarding.policydetailsrest.exception.PolicyNotFoundException;
@@ -14,10 +14,10 @@ import org.springframework.ws.soap.client.SoapFaultClientException;
 
 @Service
 public class PolicyDetailsService {
-    private final SoapClient soapClient;
+    private final PolicyDetailsSoapClient soapClient;
 
     @Autowired
-    public PolicyDetailsService(SoapClient soapClient) {
+    public PolicyDetailsService(PolicyDetailsSoapClient soapClient) {
         this.soapClient = soapClient;
     }
 
@@ -43,10 +43,13 @@ public class PolicyDetailsService {
             throw new ServiceUnavailableException("Service unavailable");
         } catch (SoapFaultClientException e) {
             String localPart = e.getFaultCode().getLocalPart();
+            String faultStringOrReason = e.getFaultStringOrReason();
+
             if (localPart.equals(POLICY_NOT_FOUND_EXCEPTION_FAULT_CODE)) {
-                throw new PolicyNotFoundException(e.getFaultStringOrReason());
+                throw new PolicyNotFoundException(faultStringOrReason);
             }
-            throw new BadRequestException("Invalid soap request");
+
+            throw new BadRequestException("Invalid soap request : " + faultStringOrReason);
         }
     }
 }

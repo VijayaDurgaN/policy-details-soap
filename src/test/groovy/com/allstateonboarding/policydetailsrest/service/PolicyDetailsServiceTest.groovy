@@ -1,6 +1,6 @@
 package com.allstateonboarding.policydetailsrest.service
 
-import com.allstateonboarding.policydetailsrest.client.SoapClient
+import com.allstateonboarding.policydetailsrest.client.PolicyDetailsSoapClient
 import com.allstateonboarding.policydetailsrest.exception.BadRequestException
 import com.allstateonboarding.policydetailsrest.exception.PolicyNotFoundException
 import com.allstateonboarding.policydetailsrest.exception.ServiceUnavailableException
@@ -14,7 +14,7 @@ import javax.xml.namespace.QName
 
 class PolicyDetailsServiceTest extends Specification {
 
-    def mockSoapClient = Mock(SoapClient)
+    def mockSoapClient = Mock(PolicyDetailsSoapClient)
     def service = new PolicyDetailsService(mockSoapClient)
 
     def "should get policy details given claim number"() {
@@ -50,7 +50,9 @@ class PolicyDetailsServiceTest extends Specification {
     def "should throw soap fault exception when soap service gives fault"() {
         given:
         def exception = Mock(SoapFaultClientException)
+        def expectedErrorMessage = "claim number abc is invalid"
         1 * exception.getFaultCode() >> new QName("http://example.com", "MOCK_ERROR")
+        1 * exception.getFaultStringOrReason() >> expectedErrorMessage
         1 * mockSoapClient.sendSoapRequest(_) >> {
             throw exception
         }
@@ -60,7 +62,7 @@ class PolicyDetailsServiceTest extends Specification {
 
         then:
         def soapFaultException = thrown(BadRequestException)
-        soapFaultException.message == "Invalid soap request"
+        soapFaultException.message == "Invalid soap request : ${expectedErrorMessage}"
     }
 
     def "should throw policy not found exception when soap fault code is POLICY_NOT_FOUND_EXCEPTION"() {
