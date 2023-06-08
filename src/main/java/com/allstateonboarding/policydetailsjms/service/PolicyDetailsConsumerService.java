@@ -2,6 +2,10 @@ package com.allstateonboarding.policydetailsjms.service;
 
 import com.allstateonboarding.policydetailsjms.model.PolicyDetailsJmsDTO;
 import com.allstateonboarding.policydetailsjms.model.PolicyDetailsResult;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.jms.JMSException;
+import jakarta.jms.TextMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.annotation.JmsListener;
@@ -27,7 +31,9 @@ public class PolicyDetailsConsumerService {
 
 
     @JmsListener(destination = "${spring.jms.policyDetailsQueueName}")
-    public void receive(PolicyDetailsJmsDTO policyDetails) {
+    public void receive(TextMessage textMessage) throws JsonProcessingException, JMSException {
+        String policyDetailsText = textMessage.getText();
+        PolicyDetailsJmsDTO policyDetails = new ObjectMapper().readValue(policyDetailsText, PolicyDetailsJmsDTO.class);
         if (String.valueOf(policyDetails.getPolicyNumber()).length() > 8) {
             sendPolicyResult(policyDetails, true, POLICY_RESULT_SUCCESS_DESCRIPTION);
         } else {

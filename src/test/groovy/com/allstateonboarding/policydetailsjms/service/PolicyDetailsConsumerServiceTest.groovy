@@ -2,6 +2,8 @@ package com.allstateonboarding.policydetailsjms.service
 
 import com.allstateonboarding.policydetailsjms.model.PolicyDetailsJmsDTO
 import com.allstateonboarding.policydetailsjms.model.PolicyDetailsResult
+import com.fasterxml.jackson.databind.ObjectMapper
+import jakarta.jms.TextMessage
 import org.springframework.jms.core.JmsTemplate
 import spock.lang.Specification
 
@@ -15,7 +17,11 @@ class PolicyDetailsConsumerServiceTest extends Specification {
 
     def "should send policy details result to the result queue when received a policy from the request queue"() {
         when:
-        service.receive(policyDetailsRequest)
+        def objectMapper = new ObjectMapper()
+        def policyDetailsAsString = objectMapper.writeValueAsString(policyDetailsRequest)
+        def mockTextMessage = Mock(TextMessage)
+        1 * mockTextMessage.getText() >> policyDetailsAsString
+        service.receive(mockTextMessage)
 
         then:
         1 * mockTemplate.convertAndSend(mockResultQueueName, policyDetailsResult)
