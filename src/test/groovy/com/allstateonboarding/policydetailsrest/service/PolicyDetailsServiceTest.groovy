@@ -83,4 +83,23 @@ class PolicyDetailsServiceTest extends Specification {
 
         soapFaultException.message == expectedErrorMessage
     }
+
+    def "should throw service unavailable exception when soap fault code is INTERNAL_SERVER_ERROR"() {
+        given:
+        def exception = Mock(SoapFaultClientException)
+        def expectedErrorMessage = "Error fetching policy details"
+        1 * exception.getFaultCode() >> new QName("http://example.com", "INTERNAL_SERVER_ERROR")
+        1 * exception.getFaultStringOrReason() >> expectedErrorMessage
+        1 * mockSoapClient.sendSoapRequest(_) >> {
+            throw exception
+        }
+
+        when:
+        service.getPolicyDetails(12345678)
+
+        then:
+        def soapFaultException = thrown(ServiceUnavailableException)
+
+        soapFaultException.message == expectedErrorMessage
+    }
 }
