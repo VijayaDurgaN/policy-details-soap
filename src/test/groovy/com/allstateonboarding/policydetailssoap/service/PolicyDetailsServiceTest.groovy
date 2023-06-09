@@ -1,6 +1,6 @@
 package com.allstateonboarding.policydetailssoap.service
 
-import com.allstateonboarding.policydetailssoap.exception.PolicyNotFoundException
+
 import com.allstateonboarding.policydetailssoap.generated.PolicyDetails
 import com.allstateonboarding.policydetailssoap.repository.PolicyDetailsRepository
 import org.slf4j.Logger
@@ -16,7 +16,7 @@ class PolicyDetailsServiceTest extends Specification {
         given:
         def claimNumber = 1233
         def mockLogger = Mock(Logger)
-        service.logger = mockLogger
+        service.@logger = mockLogger
         def policyDetails = new PolicyDetails()
         policyDetails.setClaimNumber(1233)
 

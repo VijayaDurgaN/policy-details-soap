@@ -14,7 +14,7 @@ import java.util.List;
 public class PolicyDetailsRepository {
 
     private final PolicyDetailsReader reader;
-    protected Logger logger = org.slf4j.LoggerFactory.getLogger(PolicyDetailsRepository.class);
+    private Logger logger = org.slf4j.LoggerFactory.getLogger(PolicyDetailsRepository.class);
 
     @Autowired
     public PolicyDetailsRepository(PolicyDetailsReader reader) {

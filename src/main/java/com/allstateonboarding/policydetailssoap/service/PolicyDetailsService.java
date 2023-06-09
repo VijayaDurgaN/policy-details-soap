@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PolicyDetailsService {
-    protected Logger logger = org.slf4j.LoggerFactory.getLogger(PolicyDetailsService.class);
+    private Logger logger = org.slf4j.LoggerFactory.getLogger(PolicyDetailsService.class);
 
     private final PolicyDetailsRepository repository;
     private final PolicyProducerService policyProducerService;

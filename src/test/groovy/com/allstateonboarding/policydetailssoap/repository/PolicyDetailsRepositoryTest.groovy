@@ -39,7 +39,7 @@ class PolicyDetailsRepositoryTest extends Specification {
         given:
         def claimNumber = 120
         def mockLogger = Mock(Logger)
-        repository.logger = mockLogger
+        repository.@logger = mockLogger
 
         when:
         repository.findByClaimNumber(claimNumber)
@@ -55,7 +55,7 @@ class PolicyDetailsRepositoryTest extends Specification {
         given:
         def claimNumber = 1233
         def mockLogger = Mock(Logger)
-        repository.logger = mockLogger
+        repository.@logger = mockLogger
 
         when:
         repository.findByClaimNumber(claimNumber)
