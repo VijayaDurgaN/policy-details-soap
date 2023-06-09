@@ -9,6 +9,6 @@ public class ReaderConfig {
     @Bean
     public PolicyDetailsReader policyDetailsReader()
     {
-        return new PolicyDetailsReader("mock_policy_details_.json");
+        return new PolicyDetailsReader("mock_policy_details.json");
     }
 }
