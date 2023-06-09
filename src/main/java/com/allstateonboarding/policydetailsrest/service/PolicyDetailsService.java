@@ -23,6 +23,7 @@ public class PolicyDetailsService {
     }
 
     private static final String POLICY_NOT_FOUND_EXCEPTION_FAULT_CODE = "POLICY_NOT_FOUND_EXCEPTION";
+    private static final String INTERNAL_SERVER_ERROR_FAULT_CODE = "INTERNAL_SERVER_ERROR";
 
     public PolicyDetailsDTO getPolicyDetails(Integer claimNumber) {
         GetPolicyDetailsRequest getPolicyDetailsRequest = new GetPolicyDetailsRequest();
@@ -42,8 +43,9 @@ public class PolicyDetailsService {
 
             if (localPart.equals(POLICY_NOT_FOUND_EXCEPTION_FAULT_CODE)) {
                 throw new PolicyNotFoundException(faultStringOrReason);
+            } else if (localPart.equals(INTERNAL_SERVER_ERROR_FAULT_CODE)) {
+                throw new ServiceUnavailableException(faultStringOrReason);
             }
-
             throw new BadRequestException("Invalid soap request : " + faultStringOrReason);
         }
     }

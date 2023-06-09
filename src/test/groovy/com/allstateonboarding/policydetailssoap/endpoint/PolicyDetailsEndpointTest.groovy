@@ -76,7 +76,15 @@ class PolicyDetailsEndpointTest extends Specification {
                         "</ns:GetPolicyDetailsRequest>"
         )
         client.sendRequest(withPayload(request))
-                .andExpect(serverOrReceiverFault("Error fetching policy details"))
+                .andExpect(
+                        xpath("//faultcode")
+                                .evaluatesTo("ns0:INTERNAL_SERVER_ERROR")
+                )
+                .andExpect(
+                        xpath("//faultstring")
+                                .evaluatesTo("Error fetching policy details")
+                )
+//                .andExpect(serverOrReceiverFault("Error fetching policy details"))
     }
 
     def "should return policy not found soap fault when policy with claim number does not exist"() {
