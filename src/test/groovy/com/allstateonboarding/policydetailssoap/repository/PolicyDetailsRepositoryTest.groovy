@@ -1,6 +1,7 @@
 package com.allstateonboarding.policydetailssoap.repository
 
 import com.allstateonboarding.policydetailssoap.exception.InternalServerError
+import com.allstateonboarding.policydetailssoap.exception.PolicyNotFoundException
 import com.allstateonboarding.policydetailssoap.generated.PolicyDetails
 import org.slf4j.Logger
 import spock.lang.Specification
@@ -8,8 +9,8 @@ import spock.lang.Specification
 import java.util.stream.Collectors
 
 class PolicyDetailsRepositoryTest extends Specification {
-    private PolicyDetailsReader reader = Mock(PolicyDetailsReader)
-    private PolicyDetailsRepository repository = new PolicyDetailsRepository(reader)
+    def reader = Mock(PolicyDetailsReader)
+    def repository = new PolicyDetailsRepository(reader)
     def listOfPolicyDetails = List.of(
             1233,
             1234,
@@ -31,21 +32,23 @@ class PolicyDetailsRepositoryTest extends Specification {
 
         then:
         1 * reader.readPolicyDetails() >> listOfPolicyDetails
-        policyDetail != Optional.empty()
-        policyDetail.get().claimNumber == claimNumber
+        policyDetail.claimNumber == claimNumber
     }
 
-    def "should return empty optional object when claim number does not exist"() {
+    def "should throw error when policy with given claim number is not found"() {
         given:
-        def claimNumber = 1230
+        def claimNumber = 120
+        def mockLogger = Mock(Logger)
+        repository.logger = mockLogger
 
         when:
-        def policyDetail = repository.findByClaimNumber(claimNumber)
-
+        repository.findByClaimNumber(claimNumber)
 
         then:
+        1 * mockLogger.error("Policy with claim number 120 not found")
         1 * reader.readPolicyDetails() >> listOfPolicyDetails
-        policyDetail == Optional.empty()
+        def exception = thrown(PolicyNotFoundException)
+        exception.message == String.format("Policy with claim number %s not found", claimNumber)
     }
 
     def "should throw Internal Server Error when policy details could not be fetched"() {
@@ -53,8 +56,10 @@ class PolicyDetailsRepositoryTest extends Specification {
         def claimNumber = 1233
         def mockLogger = Mock(Logger)
         repository.logger = mockLogger
+
         when:
         repository.findByClaimNumber(claimNumber)
+
         then:
         1 * reader.readPolicyDetails() >> { throw new IOException() }
         def error = thrown(InternalServerError)

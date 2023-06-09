@@ -24,26 +24,10 @@ class PolicyDetailsServiceTest extends Specification {
         def response = service.getPolicyDetailsByClaimNumber(claimNumber)
 
         then:
-        1 * repo.findByClaimNumber(claimNumber) >> Optional.of(policyDetails)
+        1 * repo.findByClaimNumber(claimNumber) >> policyDetails
         1 * producerService.produce(policyDetails)
         1 * mockLogger.info("Fetching policy details for claim number {}", claimNumber)
         1 * mockLogger.info("Fetching policy details for claim number {} completed", claimNumber)
         response.policyDetails.claimNumber == claimNumber
-    }
-
-    def "should throw error when claim number is invalid"() {
-        given:
-        def claimNumber = 120
-        def mockLogger = Mock(Logger)
-        service.logger = mockLogger
-        when:
-        service.getPolicyDetailsByClaimNumber(claimNumber)
-
-        then:
-        1 * mockLogger.error("Policy with claim number 120 not found")
-        1 * repo.findByClaimNumber(claimNumber) >> Optional.empty()
-        0 * producerService.produce(_)
-        def exception = thrown(PolicyNotFoundException)
-        exception.message == String.format("Policy with claim number %s not found", claimNumber)
     }
 }

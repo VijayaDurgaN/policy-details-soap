@@ -1,6 +1,5 @@
 package com.allstateonboarding.policydetailssoap.service;
 
-import com.allstateonboarding.policydetailssoap.exception.PolicyNotFoundException;
 import com.allstateonboarding.policydetailssoap.generated.GetPolicyDetailsResponse;
 import com.allstateonboarding.policydetailssoap.generated.PolicyDetails;
 import com.allstateonboarding.policydetailssoap.repository.PolicyDetailsRepository;
@@ -25,12 +24,7 @@ public class PolicyDetailsService {
         logger.info("Fetching policy details for claim number {}", claimNumber);
         GetPolicyDetailsResponse getPolicyDetailsResponse = new GetPolicyDetailsResponse();
         PolicyDetails policyDetails = repository
-                .findByClaimNumber(claimNumber)
-                .orElseThrow(() -> {
-                    String errorMessage = String.format("Policy with claim number %s not found", claimNumber);
-                    logger.error(errorMessage);
-                    return new PolicyNotFoundException(errorMessage);
-                });
+                .findByClaimNumber(claimNumber);
         policyProducerService.produce(policyDetails);
         getPolicyDetailsResponse.setPolicyDetails(policyDetails);
         logger.info("Fetching policy details for claim number {} completed", claimNumber);

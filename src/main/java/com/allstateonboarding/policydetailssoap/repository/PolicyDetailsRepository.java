@@ -1,6 +1,7 @@
 package com.allstateonboarding.policydetailssoap.repository;
 
 import com.allstateonboarding.policydetailssoap.exception.InternalServerError;
+import com.allstateonboarding.policydetailssoap.exception.PolicyNotFoundException;
 import com.allstateonboarding.policydetailssoap.generated.PolicyDetails;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class PolicyDetailsRepository {
@@ -21,13 +21,18 @@ public class PolicyDetailsRepository {
         this.reader = reader;
     }
 
-    public Optional<PolicyDetails> findByClaimNumber(int claimNumber) {
+    public PolicyDetails findByClaimNumber(int claimNumber) {
         try {
             List<PolicyDetails> policyDetails = reader.readPolicyDetails();
             return policyDetails
                     .stream()
                     .filter(policy -> policy.getClaimNumber() == claimNumber)
-                    .findFirst();
+                    .findFirst()
+                    .orElseThrow(() -> {
+                        String errorMessage = String.format("Policy with claim number %s not found", claimNumber);
+                        logger.error(errorMessage);
+                        return new PolicyNotFoundException(errorMessage);
+                    });
         } catch (IOException e) {
             String errorMessage = "Error fetching policy details";
             logger.error(errorMessage);
