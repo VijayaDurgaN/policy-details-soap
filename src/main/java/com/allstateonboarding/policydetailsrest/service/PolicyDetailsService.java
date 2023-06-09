@@ -7,6 +7,7 @@ import com.allstateonboarding.policydetailsrest.exception.PolicyNotFoundExceptio
 import com.allstateonboarding.policydetailsrest.exception.ServiceUnavailableException;
 import com.allstateonboarding.policydetailsrest.generated.GetPolicyDetailsRequest;
 import com.allstateonboarding.policydetailsrest.generated.PolicyDetails;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.client.WebServiceIOException;
@@ -31,14 +32,8 @@ public class PolicyDetailsService {
             PolicyDetails policyDetails = soapClient
                     .sendSoapRequest(getPolicyDetailsRequest)
                     .getPolicyDetails();
-            return PolicyDetailsDTO.builder()
-                    .policyNumber(policyDetails.getPolicyNumber())
-                    .claimNumber(policyDetails.getClaimNumber())
-                    .coverageName(policyDetails.getCoverageName())
-                    .coverageLimit(policyDetails.getCoverageLimit())
-                    .policyHolderName(policyDetails.getPolicyHolderName())
-                    .deductible(policyDetails.getDeductible())
-                    .build();
+            ModelMapper modelMapper = new ModelMapper();
+            return modelMapper.map(policyDetails, PolicyDetailsDTO.class);
         } catch (WebServiceIOException e) {
             throw new ServiceUnavailableException("Service unavailable");
         } catch (SoapFaultClientException e) {
